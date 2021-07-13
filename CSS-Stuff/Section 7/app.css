@@ -1,0 +1,79 @@
+body{
+    background-color: #ffffff;
+}
+h1, h2{
+    color: #000000;
+}
+button{
+    background-color: #14213d;
+    color: #e5e5e5;
+    font-size: 30px;
+}
+span{
+    color: #fca311;
+}
+
+
+.post button:hover{
+    background-color: #e5e5e5;
+    color: #14213d;
+}
+
+/* IDs */
+#signup{
+    background-color: #fca311;
+    color: #000000;
+}
+
+/* Classes */
+.tag{
+    background-color: #d00000;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+/* Anchor tags descending from Post Class */
+.post a{
+    color: #fca311;
+    text-decoration: none;
+}
+
+/* Button following H2 */
+h2 + button{
+    font-size: 20px;
+    background-color: #d00000;
+}
+
+/* Anchor directly descending from Footer */
+footer > a{
+    color: #d00000;
+}
+
+/* All Inputs with a type Password*/
+input[type="password"]{
+    color: #fca311;
+}
+
+/* Any Anchor tags where teh HREF contains Google */
+a[href*="google"]{
+    color: magenta;
+}
+.post a:hover{
+    font-weight: bold;
+    text-decoration: underline;
+}
+.post button:active{
+    background-color: #000;
+}
+.post:nth-of-type(2n){
+    background-color: #f0f0f0;
+}
+.post h2::first-letter{
+    font-size: 50px;
+}
+p::first-line{
+    color: #d00000;
+}
+p::selection{
+    background-color: #fca311;
+}
