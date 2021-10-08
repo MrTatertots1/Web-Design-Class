@@ -18,13 +18,16 @@ while (isRunning) {
             break;
         case 'delete':
             let index = parseInt(prompt("Enter item's index"));
-            if (index === NaN) console.log("Not a number. Nothing happened");
+            if (index === NaN || index >= todoList.length) console.log("INVALID INDEX");
             else {
                 console.log(`TODO ${index} REMOVED`);
                 todoList.splice(index, 1);
             }
             break;
         case 'quit':
+            isRunning = false;
+            break;
+        case 'q':
             isRunning = false;
             break;
     }
