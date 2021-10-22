@@ -16,4 +16,14 @@ function randColor() {
 
 
 
+const section = document.querySelector('section');
+const btn = document.querySelector('#changeColor');
+
+btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    section.style.backgroundColor = randColor();
+})
+section.addEventListener('click', function () {
+    section.classList.toggle('hide');
+})
 
