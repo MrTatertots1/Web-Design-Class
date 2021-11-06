@@ -11,7 +11,7 @@ const port = 3000
 
 // / => 'home'
 app.get('/', (req, res) => {
-    res.send('This is the Home Page')
+    res.send('Welcome to the Home Page')
 })
 
 app.get('/r/:subreddit', (req, res) => { // Defines a pattern. Can continue ex. "/r/:subreddit/:comments"
@@ -21,6 +21,9 @@ app.get('/r/:subreddit', (req, res) => { // Defines a pattern. Can continue ex. 
 
 app.get('/search', (req, res) => {
     const { q } = req.query
+    if (!q) {
+        res.send('NOTHING FOUND IF NOTHING SEARCHED')
+    }
     res.send(`<h1>Search results for: ${q}</h1>`)
 })
 
