@@ -14,6 +14,16 @@ app.get('/', (req, res) => {
     res.send('This is the Home Page')
 })
 
+app.get('/r/:subreddit', (req, res) => { // Defines a pattern. Can continue ex. "/r/:subreddit/:comments"
+    const { subreddit } = req.params
+    res.send(`<h1>Welcome to the ${subreddit} Subreddit</h1>`)
+})
+
+app.get('/search', (req, res) => {
+    const { q } = req.query
+    res.send(`<h1>Search results for: ${q}</h1>`)
+})
+
 // /cats => 'meow'
 app.get('/cats', (req, res) => {
     res.send('MEOW')
