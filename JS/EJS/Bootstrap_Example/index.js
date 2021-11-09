@@ -11,12 +11,12 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.get('/', (req, res) => {
-    res.render('home');
+    res.render('home', { name: 'Home' });
 });
 
 app.get('/rand', (req, res) => {
     const num = Math.floor(Math.random() * 10) + 1;
-    res.render('random', { num }); // Pass data using {num} to match variable exactly or {myNum : num} to match num to variable myNum
+    res.render('random', { num, name: 'Random' }); // Pass data using {num} to match variable exactly or {myNum : num} to match num to variable myNum
 });
 
 app.get('/r/:subreddit', (req, res) => {
@@ -25,7 +25,7 @@ app.get('/r/:subreddit', (req, res) => {
     if (data) {
         res.render('subreddit', { ...data });
     } else {
-        res.render('notfound', { subreddit });
+        res.render('notfound', { subreddit, name: '404 Error' });
     }
 });
 
