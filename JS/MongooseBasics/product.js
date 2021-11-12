@@ -57,7 +57,7 @@ productSchema.methods.addCategory = function (newCat) {
     return this.save();
 }
 
-productSchema.statics.fireSale = function () {
+productSchema.statics.fireSale = function () { // Static Method
     return this.updateMany({}, { onSale: true, price: 0 })
 }
 

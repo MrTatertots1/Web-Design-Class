@@ -13,20 +13,23 @@ const personSchema = new mongoose.Schema({
     last: String
 })
 
-personSchema.virtual('fullName').get(function () {
-    return `${this.first} ${this.last}`
-})
+personSchema.virtual('fullName')
+    .get(function () {
+        return `${this.first} ${this.last}`
+    })
+    .set(function (v) {
+        this.first = v.substr(0, v.indexOf(' '))
+        this.last = v.substr(v.indexOf(' '))
+    })
 
 personSchema.pre('save', async function () {
-    this.first = 'YO';
-    this.last = 'MAMA';
-    console.log("ABOUT TO SAVE!!!!")
+    this.first = 'YO'
+    this.last = 'MAMA'
+    console.log('ABOUT TO SAVE!!')
 })
 personSchema.post('save', async function () {
-    console.log("JUST SAVED!!!!")
+    console.log('JUST SAVE!!')
 })
 
-
 const Person = mongoose.model('Person', personSchema);
-
 
