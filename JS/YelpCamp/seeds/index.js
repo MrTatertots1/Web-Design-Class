@@ -9,18 +9,29 @@ db.once('open', () => {
     console.log('Database connected');
 });
 
+const axios = require('axios')
+
 const sample = (array) => array[Math.floor(Math.random() * array.length)];
 
+const url = 'https://api.unsplash.com/collections/429524/photos?client_id=2eEW2PZQpGVVSVAMd4sA4lHQ3tqHdsEia1RAdgo6x4M&page=1&per_page=50'
 
 const seedDB = async () => {
+    const allPhotos = await axios.get(url)
+        .then(function (res) {
+            return res.data
+        })
     await Campground.deleteMany({});
-    for (let i = 0; i < 50; i++) {
+
+    for (let i = 0; i < 30; i++) {
         const random1000 = Math.floor(Math.random() * 1000);
         const price = Math.floor(Math.random() * 20) + 10
         const camp = new Campground({
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
-            image: 'https://source.unsplash.com/collection/48321',
+            images: {
+                regular: allPhotos[i].urls.regular,
+                small: allPhotos[i].urls.small
+            },
             description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque, quos eligendi et corrupti dignissimos deserunt voluptate modi. Dolorum, animi fuga tenetur, ea corrupti, repudiandae totam aut pariatur eius libero earum.',
             price
         });
