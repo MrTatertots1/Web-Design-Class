@@ -9,23 +9,24 @@ db.once('open', () => {
     console.log('Database connected');
 });
 
-const axios = require('axios')
+const axios = require('axios');
 
 const sample = (array) => array[Math.floor(Math.random() * array.length)];
 
-const url = 'https://api.unsplash.com/collections/429524/photos?client_id=2eEW2PZQpGVVSVAMd4sA4lHQ3tqHdsEia1RAdgo6x4M&page=1&per_page=50'
+const url = 'https://api.unsplash.com/collections/429524/photos?client_id=2eEW2PZQpGVVSVAMd4sA4lHQ3tqHdsEia1RAdgo6x4M&page=1&per_page=50';
 
 const seedDB = async () => {
     const allPhotos = await axios.get(url)
         .then(function (res) {
-            return res.data
-        })
+            return res.data;
+        });
     await Campground.deleteMany({});
 
     for (let i = 0; i < 30; i++) {
         const random1000 = Math.floor(Math.random() * 1000);
-        const price = Math.floor(Math.random() * 20) + 10
+        const price = Math.floor(Math.random() * 20) + 10;
         const camp = new Campground({
+            author: '61d4f82f09328c55a3c551e3',
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
             image: allPhotos[i].urls.regular,
