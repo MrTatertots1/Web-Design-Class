@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
 // App Initializations
 const express = require('express');
 const port = 3000;
