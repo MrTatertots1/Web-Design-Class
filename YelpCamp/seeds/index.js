@@ -29,9 +29,9 @@ const seedDB = async () => {
             author: '61d4f82f09328c55a3c551e3',
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
-            image: allPhotos[i].urls.regular,
             description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque, quos eligendi et corrupti dignissimos deserunt voluptate modi. Dolorum, animi fuga tenetur, ea corrupti, repudiandae totam aut pariatur eius libero earum.',
-            price
+            price,
+            images: { url: allPhotos[i].urls.regular, filename: 'SEEDED IMAGE' }
         });
         await camp.save();
     }
